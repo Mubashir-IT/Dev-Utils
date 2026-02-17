@@ -73,19 +73,6 @@ export function Sidebar() {
           </Link>
         ))}
       </div>
-
-      <div className="px-6 mt-6 pt-6 border-t border-border">
-        <div className="bg-card border border-border rounded-xl p-4 shadow-sm">
-          <h4 className="font-semibold text-sm mb-1">Open Source</h4>
-          <p className="text-xs text-muted-foreground mb-3">
-            Check out the code on GitHub and star the repo!
-          </p>
-          <Button size="sm" variant="outline" className="w-full gap-2 text-xs h-8">
-            <Github className="h-3 w-3" />
-            View on GitHub
-          </Button>
-        </div>
-      </div>
     </div>
   );
 
