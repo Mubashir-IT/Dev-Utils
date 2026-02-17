@@ -5,6 +5,8 @@ import {
   Type, 
   Scale, 
   Palette,
+  Clock,
+  Shield,
   LucideIcon
 } from "lucide-react";
 
@@ -27,6 +29,24 @@ export const tools: Tool[] = [
     icon: FileJson,
     category: "Development",
     color: "text-blue-500",
+  },
+  {
+    id: "base64-converter",
+    name: "Base64 Converter",
+    description: "Encode and decode Base64 strings for APIs and auth.",
+    path: "/tools/base64-converter",
+    icon: Shield,
+    category: "Development",
+    color: "text-indigo-500",
+  },
+  {
+    id: "timestamp-converter",
+    name: "Timestamp Converter",
+    description: "Convert between Unix timestamps and human dates.",
+    path: "/tools/timestamp-converter",
+    icon: Clock,
+    category: "Development",
+    color: "text-cyan-500",
   },
   {
     id: "password-generator",

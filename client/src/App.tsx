@@ -13,12 +13,16 @@ import WordCounter from "@/pages/tools/word-counter";
 import ColorGenerator from "@/pages/tools/color-generator";
 import AgeCalculator from "@/pages/tools/age-calculator";
 import BmiCalculator from "@/pages/tools/bmi-calculator";
+import TimestampConverter from "@/pages/tools/timestamp-converter";
+import Base64Converter from "@/pages/tools/base64-converter";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
       <Route path="/tools/json-formatter" component={JsonFormatter} />
+      <Route path="/tools/base64-converter" component={Base64Converter} />
+      <Route path="/tools/timestamp-converter" component={TimestampConverter} />
       <Route path="/tools/password-generator" component={PasswordGenerator} />
       <Route path="/tools/word-counter" component={WordCounter} />
       <Route path="/tools/color-generator" component={ColorGenerator} />
