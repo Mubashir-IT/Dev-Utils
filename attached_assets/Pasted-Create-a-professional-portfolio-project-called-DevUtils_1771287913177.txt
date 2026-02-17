@@ -1,0 +1,100 @@
+Create a professional portfolio project called "DevUtils Hub" — a modern multi-tool web application containing several useful utilities in one platform.
+
+Tech Stack:
+- React (Vite)
+- Tailwind CSS
+- React Router
+- Functional components with React Hooks
+
+Project Goal:
+Build a clean, scalable, SaaS-style multi-utility platform suitable for a developer portfolio.
+
+Design Requirements:
+- Modern and minimal UI
+- Dashboard-style layout
+- Responsive for mobile and desktop
+- Professional spacing and typography
+- Soft shadows and rounded cards
+- Dark / Light mode toggle
+- Smooth hover and transition effects
+
+Application Layout:
+- Persistent Navbar or Sidebar
+- Main dashboard workspace
+- Reusable layout shared across all tools
+
+Pages:
+1. Home Page
+   - App introduction
+   - Button to open Tools Dashboard
+
+2. Tools Dashboard
+   - Grid of tool cards
+   - Search bar to filter tools
+   - Each card includes icon, title, description, and open button
+
+3. Individual Tool Pages (separate routes)
+
+Tools to Implement:
+
+1. Age Calculator
+   - Input date of birth
+   - Display age in years, months, days
+
+2. Password Generator
+   - Length selector
+   - Toggle uppercase, lowercase, numbers, symbols
+   - Copy to clipboard feature
+
+3. JSON Formatter
+   - JSON input textarea
+   - Format and validate JSON
+   - Error handling
+   - Copy formatted result
+
+4. Word Counter
+   - Live word count
+   - Character count
+   - Estimated reading time
+
+5. BMI Calculator
+   - Height and weight inputs
+   - BMI result with health category
+
+6. Color Generator
+   - Generate random colors
+   - Display HEX value
+   - Copy color button
+   - Background preview
+
+Architecture Requirements:
+- Reusable components:
+  - Navbar / Sidebar
+  - ToolCard
+  - ToolLayout (shared layout for all tools)
+  - Button component
+- Store tools metadata in a separate data file
+- Use React Router for navigation
+- Keep logic separated from UI components
+- Clean and scalable folder structure
+
+Folder Structure:
+
+src/
+  components/
+  layouts/
+  pages/
+  pages/tools/
+  data/
+  routes/
+
+Extra Features:
+- Copy-to-clipboard functionality
+- LocalStorage support for theme preference
+- Smooth animations
+- Clean, readable, production-style code
+
+Output:
+Generate complete working code ready to run using:
+npm install
+npm run dev
