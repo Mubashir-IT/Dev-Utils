@@ -1,38 +1,30 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import { toolStats, type ToolStat } from "@shared/schema";
+import { eq, sql } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getAllStats(): Promise<ToolStat[]>;
+  trackView(toolId: string, name: string): Promise<void>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async getAllStats(): Promise<ToolStat[]> {
+    return await db.select().from(toolStats);
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async trackView(toolId: string, name: string): Promise<void> {
+    // Upsert: Increment views if exists, otherwise insert with views=1
+    await db
+      .insert(toolStats)
+      .values({ toolId, name, views: 1 })
+      .onConflictDoUpdate({
+        target: toolStats.toolId,
+        set: { 
+          views: sql`${toolStats.views} + 1`,
+          lastAccessed: new Date()
+        },
+      });
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
