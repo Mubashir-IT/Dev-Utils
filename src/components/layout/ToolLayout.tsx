@@ -32,7 +32,7 @@ export function ToolLayout({ children, title, description, toolId }: ToolLayoutP
     <div className="min-h-screen bg-background font-sans text-foreground">
       <Sidebar />
       <main className="lg:pl-[280px] min-h-screen pt-16 lg:pt-0 transition-all duration-300">
-        <div className="container mx-auto max-w-5xl p-6 lg:p-10">
+        <div className="container mx-auto max-w-7xl p-6 lg:p-10">
           {(title || description) && (
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
