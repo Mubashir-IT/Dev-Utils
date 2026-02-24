@@ -1,86 +1,21 @@
-# Dev-Utils
+# Frontend
 
-A full-stack developer tools application with a React frontend and Express backend.
+React SPA built with Vite, TypeScript, Tailwind CSS, and shadcn/ui.
 
-## Project Structure
+## Structure
 
-```
-Dev-Utils/
-├── frontend/          # React SPA (Vite + TypeScript)
-│   ├── src/
-│   │   ├── components/   # UI components (shadcn/ui)
-│   │   ├── hooks/       # React hooks
-│   │   ├── lib/        # Utilities, API client
-│   │   └── pages/      # Route pages & tools
-│   └── index.html
-│
-├── backend/           # Express API server
-│   ├── index.ts       # Server entry point
-│   ├── routes.ts      # API route handlers
-│   ├── db.ts          # Database connection (Drizzle)
-│   ├── storage.ts     # Data access layer
-│   ├── schema.ts      # Drizzle schema
-│   └── api.ts         # API route definitions
-│
-└── migrations/       # Drizzle migrations
-```
+- `src/components/` - Reusable UI components
+- `src/hooks/` - Custom React hooks (useStats, useToast, etc.)
+- `src/lib/` - Utilities, API client, tools config
+- `src/pages/` - Route pages and tool implementations
 
-## Getting Started
+## Path Aliases
 
-### Prerequisites
+- `@/*` → `src/*`
+- API config in `src/lib/api.ts` (paths, base URL)
 
-- Node.js 18+
-- PostgreSQL (for `DATABASE_URL`)
+## Development
 
-### Setup
+Run from project root: `npm run dev`
 
-1. Install dependencies (run in each folder):
-   ```bash
-   cd frontend && npm install
-   cd backend && npm install
-   ```
-
-2. Create `.env` in **backend/** folder with:
-   ```
-   DATABASE_URL=postgresql://user:pass@localhost:5432/devutils
-   PORT=5000
-   ```
-
-3. Push database schema (from backend folder):
-   ```bash
-   cd backend && npm run db:push
-   ```
-
-### Development
-
-```bash
-cd backend && npm run dev
-```
-
-Starts the API server on port 5000. Run frontend separately:
-
-```bash
-cd frontend && npm run dev
-```
-
-Frontend runs on port 5173 and calls the API via CORS.
-
-### Production Build
-
-```bash
-cd backend && npm run build
-cd backend && npm run start
-```
-
-Builds backend to `dist/index.cjs`. Build frontend separately: `cd frontend && npm run build`. Deploy each independently.
-
-## Available Tools
-
-- JSON Formatter
-- Base64 Converter
-- Timestamp Converter
-- Password Generator
-- Word Counter
-- Color Generator
-- Age Calculator
-- BMI Calculator
+The frontend is served by the backend's Vite middleware in development.
