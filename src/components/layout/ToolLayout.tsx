@@ -29,7 +29,7 @@ export function ToolLayout({ children, title, description, toolId }: ToolLayoutP
   }, [toolId, location, trackView]);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="min-h-screen bg-background font-sans text-foreground p-10">
       <Sidebar />
       <main className="lg:pl-[280px] min-h-screen pt-16 lg:pt-0 transition-all duration-300">
         <div className="container mx-auto max-w-full p-2">

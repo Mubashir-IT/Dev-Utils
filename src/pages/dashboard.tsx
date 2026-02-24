@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { useStats } from "@/hooks/use-stats";
 import { motion } from "framer-motion";
-import { ArrowRight, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Dashboard() {
@@ -33,29 +33,34 @@ export default function Dashboard() {
   return (
     <ToolLayout 
       title="Dashboard" 
-      description="Welcome to DevUtils. A collection of developer tools to make your life easier."
+      description="Welcome to DevUtils. Handy utilities for developers, writers, and everyday tasks."
     >
       <div className="space-y-10">
         {/* Featured Section */}
         <section>
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-violet-600 p-8 lg:p-12 text-white shadow-xl shadow-primary/20">
             <div className="relative z-10 max-w-2xl">
-              <h2 className="text-3xl font-bold mb-4 font-display">Minimalist Tools for Maximum Productivity</h2>
-              <p className="text-primary-foreground/90 text-lg mb-8 leading-relaxed">
-                Free, privacy-focused, and open-source utilities for developers and designers. No ads, no tracking, just tools.
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 font-display tracking-tight">Handy Utilities for Work & Life</h2>
+              <p className="text-white/90 text-base sm:text-lg mb-8 leading-relaxed">
+                Free, privacy-focused tools for developers, writers, and everyday tasks. No ads, no tracking—just simple utilities that work.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/tools/json-formatter">
-                  <button className="px-6 py-3 bg-white text-primary font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-200 flex items-center gap-2">
-                    Try JSON Formatter <ArrowRight className="h-4 w-4" />
-                  </button>
+              {popularToolId ? (
+                <Link
+                  href={tools.find(t => t.id === popularToolId)?.path ?? "/tools/json-formatter"}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 transition-all duration-200"
+                >
+                  Try {tools.find(t => t.id === popularToolId)?.name ?? "JSON Formatter"}
+                  <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
-                <Link href="https://github.com/replit/dev-utils">
-                  <button className="px-6 py-3 bg-primary-foreground/20 text-white font-semibold rounded-xl hover:bg-primary-foreground/30 transition-all duration-200 backdrop-blur-sm border border-white/20">
-                    Star on GitHub
-                  </button>
-                </Link>
-              </div>
+              ) : (
+                <a
+                  href="#tools"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-semibold rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 transition-all duration-200"
+                >
+                  Explore Tools
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </a>
+              )}
             </div>
             
             {/* Abstract Background Shapes */}
@@ -65,7 +70,7 @@ export default function Dashboard() {
         </section>
 
         {/* Tools Grid */}
-        <section>
+        <section id="tools">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl font-bold flex items-center gap-2">
               All Tools <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{tools.length}</span>
